@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: postgresql
+    targetRevision: 18.1.13
+    helm:
+      releaseName: postgresql
+      values: |
+        architecture: standalone
+
+        primary:
+          persistence:
+            enabled: true
+            existingClaim: postgres-data
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+
+        global:
+          postgresql:
+            auth:
+              database: chatbotdb
+              username: myuser
+              existingSecret: postgres-secret
+              secretKeys:
+                adminPasswordKey: postgres-password
+                userPasswordKey: password
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgresql
+
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
