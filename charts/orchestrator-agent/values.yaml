@@ -3,7 +3,7 @@ replicaCount: 2
 
 image:
   repository: khanhle04/orchestrator-agent
-  tag: v1.0.2
+  tag: v1.0.3
   pullPolicy: IfNotPresent
 
 
@@ -67,7 +67,7 @@ sealedSecrets:
   encryptedData:
     GOOGLE_API_KEY: "AgBQTDIWsr6076H3EHg2Yh0pom226sJFxM7L+mZkUEuy9VUUlf8rQUDTk6WoFFQG5VKHQ52nSpDYfB/uGFfYIkFyM9e+5RXblVlEplxophjh5CrJE/UBi+HlO1jZrR9cTo7Y5PyVdkmPiWni9LL9Dju8kq4SWQV+IYssAuKcJZGFgNtB/0Ri0OGIfS/wD1joUnfx9jY8HckFcKy+8MYkZnDD3ENK1Yk0Cj2ief04EovrdvUJYCdXm0Q/uwFwesasG+Qpin4GXmXip0ejYftqW4R/BgazQtU6V00+7/bdgst79I88NIcVOtwECaCrkQbME7Bozmq7lPPYnxZ3F0IRVIdnNaaZNtjHvDCHUnd7Rg2qIxZ7gZDXbdLsArjHVHg2jojqpkc8ftxDzVCrFIr7j/mKC+Ak3WvL2xphPhgdGZspmUmU1FOS3cRZavZMYb+Wa7Gjrx9o+60W/kjFK1p6E0Yvf373Bn8V6B0DD5LBGdFuDornE7dmxhfQGjc0WmO7MZSHzDnlqYuIHGn8VnnEzZ7bIEeCkj168zLDJuUj/ZMavhSN23DgdmYfkE+eXGMFTFngz7JEvzJl9zYfoJWZfCplPDSav2SPY0tILMDCmlBs8Fw8/3KKts34URZcEdCrucgbaNYKa+6PPzTaa5uJK0pASOvUIRDO5gx4EQiF6lQgJo49c9D85VuX+r9BAQEH8s785u6gHyJ/IAPz7SSS3RavErSxnV/snqe0gRICtMa0Ybhks4ix+Uw="
     REDIS_PASSWORD: "AgAKnCBIIQf+qIjgWVpaFrCYepRgtThd0OL/SXpCzuhQzTAiQhA7TzKRd3uTESBezV31aVN6Kf8GNBuopWQgaU7QmeqK+3FSsLgOe27H4AiLdiUYUQmAmCg0PfRAan7cSQEIbXh0ZWSbaeUkmTvPKEp3Jh7ZUR2e41qBb8dS1fCPrTLILBP8Ex40S5ThzqFcIPQIsmjIzOFsVuQzIGJ0ZQfQWiJaziJxgk3ovxaOTOeyzaJ1gD+SISnia55H9e6ETmxIJ9kcVHyQot1AyJKanLZKIjZtGIrwtd+2K7QSZZM14kzD1EbY5U+OYNug8X71ETBwUWV8GDGng0urequtTIO5K9Fc2xtiY1/gY/IsxCISQk89ayCGDllzbglrXNctucfOpJg3EtuZEt4ugmKLjxlxsjbT7FdR8OFEbO4nuvq8+RDyPcjqLD0DvCMj5r277mvI66fl5jYUo2g/fBcvQ79kInHwu0pKR6GprvcoxrV2wXCXGwul0JVrYMWteTtMjKlLBYiYwEj/jXGWoMu6lFJ/qibNOAY4nwBqgFPWWtPHr0CayuAacpb5Ku9hxIsZVqedFmK+34Nv8at9mripu9Zzn6iZjy8Xhf+SxxENuOnC6W5b1dclBEdCQXRnLUDlT+zYVJHmLr1Y6F+ZLjP3lg5JgDWcEeifC+3Q9oVYCXsWh9qG0qbj3BW8LJVDaMdGKt1c5/79QHaMHriL"
-
+    POSTGRES_PASSWORD: "AgDS+3tX9/zTyyOMqE47nE009YzkIP5CMn2HfhKux2GeZyPKGckYqhN8lzXlGVKJGZ59FoudcjYxPfeJ9wvdLJkIapmWDHk7pkHcwtEwOmOsRr+X/wrilS659kgiO0JdY9lFc+yLCxGGRK/gy6HXfiYV8Tcu66PZd+lx+M0VJW0KQbx3KwZewnW8ZzmnZ8c9BNdQVbagFMDK39oS7CmiAJqxoRXr5ZrKOu3nlvPqZ7HvcG3I0/qPDbjQuecOUozcC3owXK9Q4StnuEeM7mpWUf72KbK4RIOwPaAwOyd+7gG8Vyj2zyDqac+igqX/7jVFAYzOijCkrN/62eSgZswSWNVD4rM+3MNxkCnDCMOjARqiZaAw14/H9uJvVsd36w28+XAENDigtNKvrIn5CT0BCRM3M4UrKqyV9Dm5LNUjvSWcgjjLaB6uQkVAgtnk2ZFo7leOhTwcOwEeIWTTeG3lD0LjLHwDyMMHCLVU0DZTQqojQhWA4sS2746YCaEl8i8q+gPJWVN1NeuPagYyVBg3g64R5WYD4UXD92iBGotVk6FzTouRWppGZUkxXGiuNEKYLdIhT8fOK6YiV8hH2hI06u1azv8sniLA1GOI0EOKdDvRvAOgf9Y0GSnZwldSdKfUbKAzyBjemQR+no+TFyKEyIjCZyBIEuIi2x40z+X5fwWd1VnUQ4/FoRdYbUh83qaejLtI+NAi7WGQPaQ7THlulvrO"
 existingSecret:
   enabled: true
   name: "orchestrator-agent-sealed-secret" # Tên secret đã có sẵn trong cluster để inject biến môi trường
@@ -81,4 +81,8 @@ config:
     RAG_AGENT_URL: http://rag-agent.rag-agent.svc.cluster.local:7005
     ORCHESTRATOR_AGENT_PORT: 7010
     ORCHESTRATOR_AGENT_HOST: 0.0.0.0
+    POSTGRES_HOST: postgresql.postgresql.svc.cluster.local
+    POSTGRES_PORT: 5432
+    POSTGRES_DB: chatbotdb
+    POSTGRES_USER: myuser
 
