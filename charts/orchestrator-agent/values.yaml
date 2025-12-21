@@ -12,11 +12,11 @@ podAnnotations: {}
 
 resources:
   requests:
-    cpu: 200m
-    memory: 256Mi
+    cpu: 1
+    memory: 1Gi
   limits:
-    cpu: 400m
-    memory: 512Mi
+    cpu: 2
+    memory: 2Gi
   
 
 
