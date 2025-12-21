@@ -85,4 +85,6 @@ config:
     POSTGRES_PORT: 5432
     POSTGRES_DB: chatbotdb
     POSTGRES_USER: myuser
-
+    EMBEDDING_MODEL: intfloat/multilingual-e5-base
+    QDRANT_URL: qdrant.qdrant.svc.cluster.local
+    QDRANT_COLLECTION_NAME: mental_health_advisor
