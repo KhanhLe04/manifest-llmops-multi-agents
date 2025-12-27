@@ -1,0 +1,63 @@
+replicaCount: 1
+
+
+image:
+  repository: khanhle04/chatbot-frontend
+  tag: "v2.0.1"
+  pullPolicy: IfNotPresent
+
+
+podAnnotations: {}
+
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 256Mi
+  limits:
+    cpu: 1
+    memory: 512Mi
+  
+
+
+affinity: {}
+nodeSelector: {}
+tolerations: []
+
+
+service:
+  type: ClusterIP
+  port: 3000 # Service port (client-facing)
+  targetPort: 3000 # Container port app lắng nghe (chỉnh nếu app khác)
+
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations: {}
+# ví dụ bật rewrite: nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: chatbot.khanklee.id.vn
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    enabled: false
+    secretName: chatbot-frontend-tls # dùng khi enabled=true
+
+
+container:
+  name: chatbot-frontend
+  port: 3000 # trùng với service.targetPort ở trên
+  command: [] # ví dụ: ["/bin/app", "--flag"]
+  args: [] # ví dụ: ["--config=/etc/app/config.yaml"]
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
+  
+
+config:
+  enabled: true
+  data:
+    API_BASE_URL: "http://orchestrator-agent.orchestrator-agent.svc.cluster.local:7010"

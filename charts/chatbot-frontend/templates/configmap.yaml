@@ -1,0 +1,12 @@
+{{- if .Values.config.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "chatbot-frontend.name" . }}-config
+  labels:
+    {{- include "chatbot-frontend.labels" . | nindent 4 }}
+data:
+  {{- range $key, $value := (.Values.config.data | default (dict)) }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.container.name }}
+  labels:
+{{- include "chatbot-frontend.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "chatbot-frontend.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "chatbot-frontend.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Values.container.name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.container.port }}
+          {{- $hasConfig := and .Values.config .Values.config.enabled }}
+          {{- $hasSecret := and .Values.existingSecret .Values.existingSecret.enabled }}
+          {{- if or $hasConfig $hasSecret }}
+          envFrom:
+            {{- if $hasConfig }}
+            - configMapRef:
+                name: {{ include "chatbot-frontend.name" . }}-config
+            {{- end }}
+            {{- if $hasSecret }}
+            - secretRef:
+                name: {{ .Values.existingSecret.name }}
+            {{- end }}
+          {{- end }}
+          {{- if .Values.container.command }}
+          command:
+          {{- toYaml .Values.container.command | nindent 12 }}
+          {{- end }}
+          {{- if .Values.container.args }}
+          args:
+          {{- toYaml .Values.container.args | nindent 12 }}
+          {{- end }}
+          {{- if .Values.container.livenessProbe.enabled }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          {{- end }}
+          {{- if .Values.container.readinessProbe.enabled }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          {{- end }}
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
