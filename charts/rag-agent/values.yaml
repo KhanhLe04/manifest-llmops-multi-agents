@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: khanhle04/rag-agent
-  tag: "v2.0.0"
+  tag: "v2.0.1"
   pullPolicy: IfNotPresent
 
 
